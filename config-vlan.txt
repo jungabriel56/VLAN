@@ -1,0 +1,93 @@
+COMANDOS NO SWITCH
+
+enable
+show vlan
+config t
+
+--VLAN 2--
+vlan 2
+name lab2
+interface fa0/1 (escolher interface que será movida para a vlan)
+switchport access vlan 2
+interface fa0/2
+switchport access vlan 2
+interface range fa0/3-fa0/7
+switchport access vlan 2
+
+--VLAN 3--
+vlan 3
+name lab3
+interface fa0/8-fa0/16
+switchport access vlan 3
+
+--VLAN 4--
+vlan 4
+name wireless
+interface fa0/24
+switchport access vlan 4
+do show vlan
+
+--TRUNK--
+interface gig0/2
+switchport mode trunk
+switchport trunk allowed vlan all
+
+
+COMANDOS NO ROTEADOR
+ATRIBUINDO ENDEREÇAMENTO IP
+
+--VLAN 1--
+interface gig0/0.1
+encapsulation dot1q 1
+ip address 192.168.1.1
+
+--VLAN 2--
+interface gig0/0.2
+encapsulation dot1q 2
+ip address 192.168.2.1
+
+--VLAN 3--
+interface gig0/0.3
+encapsulation dot1q 3
+ip address 192.168.3.1
+
+--VLAN 4--
+interface gig0/0.4
+encapsulation dot1q 4
+ip address 192.168.4.1
+
+--VLAN 5--
+interface gig0/0.5
+encapsulation dot1q 5
+ip address 192.168.5.1
+
+CRIANDO DHCP
+
+--VLAN1--
+ip dhcp pool vlan1
+network 192.168.1.0 255.255.255.0
+default-route 192.168.1.1
+
+--VLAN2--
+ip dhcp pool vlan2
+network 192.168.2.0 255.255.255.0
+default-route 192.168.2.1
+
+--VLAN3--
+ip dhcp pool vlan3
+network 192.168.3.0 255.255.255.0
+default-route 192.168.3.1
+
+--VLAN4--
+ip dhcp pool vlan4
+network 192.1168.4.0 255.255.255.0
+default-route 192.168.4.1
+
+--VLAN5--
+ip dhcp pool vlan5
+network 192.168.5.0 255.255.255.0
+default-route 192.168.5.1
+
+
+
+
