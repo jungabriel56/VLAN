@@ -17,7 +17,7 @@ switchport access vlan 2
 --VLAN 3--
 vlan 3
 name lab3
-interface fa0/8-fa0/16
+interface range fa0/8-fa0/16
 switchport access vlan 3
 
 --VLAN 4--
